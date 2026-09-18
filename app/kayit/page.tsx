@@ -14,6 +14,7 @@ export default function Kayit() {
   const [sifre, setSifre] = useState("");
   const [hata, setHata] = useState("");
   const [yukleniyor, setYukleniyor] = useState(false);
+  const [basari, setBasari] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,10 +34,40 @@ export default function Kayit() {
       return;
     }
 
-    router.push("/panel");
-    router.refresh();
+    // Başarı mesajını göster
+    setBasari(true);
+
+    // 2 saniye sonra panele yönlendir
+    setTimeout(() => {
+      router.push("/panel");
+      router.refresh();
+    }, 2000);
   }
 
+  // Başarı ekranı
+  if (basari) {
+    return (
+      <>
+        <Navbar />
+        <main className="mx-auto flex max-w-md flex-col items-center px-6 py-32 text-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/10 text-4xl">
+            ✅
+          </div>
+          <h1 className="mt-6 text-2xl font-bold text-emerald-400">
+            Kayıt Başarılı!
+          </h1>
+          <p className="mt-3 text-sm text-slate-400">
+            Hesabınız başarıyla oluşturuldu. Giriş sayfasına yönlendiriliyorsunuz...
+          </p>
+          <div className="mt-6 h-1 w-48 overflow-hidden rounded-full bg-slate-800">
+            <div className="h-full w-full animate-pulse rounded-full bg-emerald-500" />
+          </div>
+        </main>
+      </>
+    );
+  }
+
+  // Kayıt formu
   return (
     <>
       <Navbar />
