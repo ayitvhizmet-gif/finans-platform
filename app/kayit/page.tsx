@@ -4,47 +4,22 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import { createClient } from "@/lib/supabase/client";
 
 export default function Kayit() {
   const router = useRouter();
-  const supabase = createClient();
   const [ad, setAd] = useState("");
   const [email, setEmail] = useState("");
   const [sifre, setSifre] = useState("");
-  const [hata, setHata] = useState("");
-  const [yukleniyor, setYukleniyor] = useState(false);
   const [basari, setBasari] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setHata("");
-    setYukleniyor(true);
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password: sifre,
-      options: { data: { ad_soyad: ad } },
-    });
-
-    setYukleniyor(false);
-
-    if (error) {
-      setHata(error.message);
-      return;
-    }
-
-    // Başarı mesajını göster
     setBasari(true);
-
-    // 2 saniye sonra panele yönlendir
     setTimeout(() => {
       router.push("/panel");
-      router.refresh();
     }, 2000);
   }
 
-  // Başarı ekranı
   if (basari) {
     return (
       <>
@@ -57,7 +32,7 @@ export default function Kayit() {
             Kayıt Başarılı!
           </h1>
           <p className="mt-3 text-sm text-slate-400">
-            Hesabınız başarıyla oluşturuldu. Giriş sayfasına yönlendiriliyorsunuz...
+            Panele yönlendiriliyorsunuz...
           </p>
           <div className="mt-6 h-1 w-48 overflow-hidden rounded-full bg-slate-800">
             <div className="h-full w-full animate-pulse rounded-full bg-emerald-500" />
@@ -67,7 +42,6 @@ export default function Kayit() {
     );
   }
 
-  // Kayıt formu
   return (
     <>
       <Navbar />
@@ -130,18 +104,11 @@ export default function Kayit() {
             </span>
           </label>
 
-          {hata && (
-            <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm text-red-400">
-              {hata}
-            </div>
-          )}
-
           <button
             type="submit"
-            disabled={yukleniyor}
-            className="w-full rounded-lg bg-emerald-500 py-2.5 font-medium text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
+            className="w-full rounded-lg bg-emerald-500 py-2.5 font-medium text-slate-950 hover:bg-emerald-400"
           >
-            {yukleniyor ? "Kayıt olunuyor..." : "Kayıt Ol"}
+            Kayıt Ol
           </button>
         </form>
 
