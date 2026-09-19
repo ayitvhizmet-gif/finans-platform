@@ -1,16 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
 
 export default function CikisButonu() {
   const router = useRouter();
-  const supabase = createClient();
 
-  async function cikisYap() {
-    await supabase.auth.signOut();
+  function cikisYap() {
     router.push("/");
-    router.refresh();
   }
 
   return (
