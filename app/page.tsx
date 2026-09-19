@@ -11,9 +11,9 @@ const stats = [
 
 const steps = [
   {
-    title: "KAYIT OL",
-    desc: "30 saniyede ücretsiz hesap aç.",
-    icon: "✍️",
+    title: "GİRİŞ YAP",
+    desc: "Panele giriş yap ve madenciliğe başla.",
+    icon: "🔐",
   },
   {
     title: "KAZAN",
@@ -64,7 +64,7 @@ const plans = [
 const faqs = [
   {
     q: "Nasıl başlarım?",
-    a: "Ücretsiz kayıt olun, kimlik doğrulaması yapın ve ilk yatırımınızı gerçekleştirin. Hepsi bu kadar.",
+    a: "Panele giriş yapın ve ilk yatırımınızı gerçekleştirin. Hepsi bu kadar.",
   },
   {
     q: "Minimum yatırım ne kadar?",
@@ -97,15 +97,15 @@ export default function Home() {
             <span className="gradient-text">ÜCRETSİZ VE HIZLI!</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Yasal, şeffaf ve güvenli yatırım platformu. Kripto, döviz ve
-            hisse senedi işlemlerinizi tek yerden yönetin.
+            Yasal, şeffaf ve güvenli madencilik platformu. Bulut madenciliği ile
+            kazancınızı tek yerden yönetin.
           </p>
           <div className="mt-10 flex justify-center gap-4">
             <Link
-              href="/kayit"
+              href="/panel"
               className="rounded-xl bg-emerald-500 px-8 py-3 font-medium text-slate-950 hover:bg-emerald-400"
             >
-              Ücretsiz Başla
+              Giriş Yap
             </Link>
             <Link
               href="#planlar"
@@ -178,12 +178,11 @@ export default function Home() {
                 }`}
               >
                 {p.popular && (
-                  <div className="absolute right-4 top-4 rounded-full bg-emerald-500 px-3 py-1 text-xs font-semibold text-slate-950">
+                  <div className="absolute right-4 top-4 z-10 rounded-full bg-emerald-500 px-3 py-1 text-xs font-semibold text-slate-950">
                     POPÜLER
                   </div>
                 )}
 
-                {/* Plan başlığı (renkli kutu) */}
                 <div
                   className={`-mx-6 -mt-6 mb-6 bg-gradient-to-br ${p.color} p-6 text-center`}
                 >
@@ -215,7 +214,7 @@ export default function Home() {
                 </ul>
 
                 <Link
-                  href="/kayit"
+                  href="/panel"
                   className="mt-6 block w-full rounded-lg bg-emerald-500 py-2.5 text-center text-sm font-medium text-slate-950 hover:bg-emerald-400"
                 >
                   YATIRIM YAP
@@ -260,13 +259,13 @@ export default function Home() {
             Bugün <span className="gradient-text">başlayın</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-slate-400">
-            Kredi kartı gerekmez. 30 saniyede ücretsiz hesabınızı açın.
+            Panele giriş yapın ve madenciliğe hemen başlayın.
           </p>
           <Link
-            href="/kayit"
+            href="/panel"
             className="mt-8 inline-block rounded-xl bg-emerald-500 px-8 py-3 font-medium text-slate-950 hover:bg-emerald-400"
           >
-            Hemen Kayıt Ol
+            Giriş Yap
           </Link>
         </div>
       </section>
