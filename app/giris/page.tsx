@@ -4,35 +4,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import { createClient } from "@/lib/supabase/client";
 
 export default function Giris() {
   const router = useRouter();
-  const supabase = createClient();
   const [email, setEmail] = useState("");
   const [sifre, setSifre] = useState("");
-  const [hata, setHata] = useState("");
-  const [yukleniyor, setYukleniyor] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setHata("");
-    setYukleniyor(true);
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password: sifre,
-    });
-
-    setYukleniyor(false);
-
-    if (error) {
-      setHata("E-posta veya şifre hatalı.");
-      return;
-    }
-
     router.push("/panel");
-    router.refresh();
   }
 
   return (
@@ -70,18 +50,11 @@ export default function Giris() {
             />
           </div>
 
-          {hata && (
-            <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm text-red-400">
-              {hata}
-            </div>
-          )}
-
           <button
             type="submit"
-            disabled={yukleniyor}
-            className="w-full rounded-lg bg-emerald-500 py-2.5 font-medium text-slate-950 hover:bg-emerald-400 disabled:opacity-50"
+            className="w-full rounded-lg bg-emerald-500 py-2.5 font-medium text-slate-950 hover:bg-emerald-400"
           >
-            {yukleniyor ? "Giriş yapılıyor..." : "Giriş Yap"}
+            Giriş Yap
           </button>
         </form>
 
