@@ -9,15 +9,15 @@ export default function Navbar() {
         </Link>
         <div className="hidden gap-8 text-sm text-slate-300 md:flex">
           <Link href="/" className="hover:text-white">Ana Sayfa</Link>
-          <Link href="#ozellikler" className="hover:text-white">Özellikler</Link>
-          <Link href="#nasil" className="hover:text-white">Nasıl Çalışır</Link>
+          <Link href="#planlar" className="hover:text-white">Planlar</Link>
+          <Link href="#sss" className="hover:text-white">SSS</Link>
         </div>
         <div className="flex items-center gap-3">
-          <Link href="/giris" className="rounded-lg px-4 py-2 text-sm text-slate-200 hover:bg-slate-800">
+          <Link
+            href="/panel"
+            className="rounded-lg bg-emerald-500 px-5 py-2 text-sm font-medium text-slate-950 hover:bg-emerald-400"
+          >
             Giriş
-          </Link>
-          <Link href="/kayit" className="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-emerald-400">
-            Ücretsiz Başla
           </Link>
         </div>
       </nav>
